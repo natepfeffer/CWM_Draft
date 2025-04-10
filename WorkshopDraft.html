@@ -9,7 +9,12 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play WorkshopDraft.</tw-noscript></noscript></tw-story>
-<tw-storydata name="WorkshopDraft" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="DFF63FC6-F666-4E34-9E78-AE8D87ED6504" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="450,275" size="100,100">&quot;99 Luftballons&quot; lightly plays on the radio as your father taps his finger on the steering wheel, humming each note. No way he can even understand this song. 
+<tw-storydata name="WorkshopDraft" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="DFF63FC6-F666-4E34-9E78-AE8D87ED6504" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="450,275" size="100,100">(set: $popularity to 42)
+(set: $familyBond to 63)
+(set: $dayCount to 0)
+
+
+&quot;99 Luftballons&quot; lightly plays on the radio as your father taps his finger on the steering wheel, humming each note. No way he can even understand this song. 
 
 Your sister somehow entangled herself in her seatbelt. She says she is too big for the car seat, but she just graduated from the ones that face backwards. 
 
@@ -26,15 +31,23 @@ Jessica, Sarah, and Casey walk by the window just as your mother and father cros
 
 **Choose one below:**
 
-[[&quot;Please?|garage&quot;]] you softly ask.
-[[&quot;I had a movie night planned with my parents. But I&#39;ll catch you on the flip.|movie&quot;]] Wow. Unbearable delivery.</tw-passagedata><tw-passagedata pid="2" name="movie&quot;" tags="" position="325,400" size="100,100">&quot;Thanks sweetie,&quot; says your father as he awkwardly hugs you around your mom. This may have actually been an intentional embarrassment. 
+[[&quot;Please?&quot;|garage]] you softly ask.
+[[&quot;I had a movie night planned with my parents. But I&#39;ll catch you on the flip.|movie]] Wow. Unbearable delivery.</tw-passagedata><tw-passagedata pid="2" name="movie" tags="" position="325,400" size="100,100">(set: $popularity to $popularity - 3)
+(set: $familyBond to $familyBond + 2)
+
+&quot;Thanks sweetie,&quot; says your father as he awkwardly hugs you around your mom. This may have actually been an intentional embarrassment. 
 
 The group of girls scoff and giggle, grab their ice cream, and head home as you hide in the sleeve of your sweatshirt.
 
-[[Get me out of this situation.|next]]</tw-passagedata><tw-passagedata pid="3" name="garage&quot;" tags="" position="450,400" size="100,100">&quot;Sure, Olivia.&quot; sighs your mother.
+ . . . Popularity: $popularity . . .
+
+[[Get me out of this situation.|next]]</tw-passagedata><tw-passagedata pid="3" name="garage" tags="" position="450,400" size="100,100">(set: $popularity to $popularity + 2)
+(set: $familyBond to $familyBond - 5)
+
+&quot;Sure, Olivia.&quot; sighs your mother.
 &quot;Thank you! I&#39;ll be home by ten,&quot; you mumble to your parents as you run off.
 
- . . .
+ . . . Family Bond: $familyBond . . .
 
 &quot;Couch or stool works,&quot; Jessica tells you. You sit at the home bar, in awe at the twelve-point buck head mounted just above. &quot;Is that real?&quot;
 &quot;Of course. I never liked it, but I&#39;m pretty sure my dad loves it more than me.&quot;
@@ -46,8 +59,68 @@ Three boys walk in, still laughing. You make up an excuse, &quot;Hey, I just rem
 &quot;Oh,&quot; replies Casey.
 &quot;Hi,&quot; you mutter as you squeeze by the boys in the doorway.
 
-[[Head home.|next]]</tw-passagedata><tw-passagedata pid="4" name="next" tags="" position="325,525" size="100,100">the end. like the ultra end
-</tw-passagedata></tw-storydata>
+[[Head home.|next]]</tw-passagedata><tw-passagedata pid="4" name="next" tags="" position="375,550" size="100,100"> . . . Popularity: $popularity  . . .
+ . . . Family Bond: $familyBond . . .
+ (set: $dayCount to $dayCount + 1)
+
+You put your old cardigan back in the closet. It&#39;s a bit tight and looks like something your mother would wear. You pull on your hoodie which is a token of your attendence to the Alanis Morissette.
+
+You grab the lunch your mother had prepared for you. It better not be soup again. While loading your backpack, your mother asks you if you&#39;d like a ride to school. Casey usually likes to chat about her brother&#39;s friend on the bus with you, but you will likely have a shorter trip with you mother.
+
+(set: $roll to (random: 1, 100)) (if: $roll &lt;= 5)[ (set: $popularity to $popularity + 3) (set: $familyBond to $familyBond + 0) [[&quot;Ride the bus.&quot;|good bus]]
+](else:)[(set: $popularity to $popularity - 6)(set: $familyBond to $familyBond - 3) [[&quot;Ride the bus.&quot;|bad bus]]]
+(if: $roll &lt;= 95)[(set: $popularity to $popularity + 1)(set: $familyBond to $familyBond + 1)[[&quot;Ride with mom.&quot;|good car]]
+](else:)[(set: $popularity to $popularity - 3)(set: $familyBond to $familyBond - 2)[[&quot;Ride with mom.&quot;|bad car]]]</tw-passagedata><tw-passagedata pid="5" name="good bus" tags="" position="475,675" size="100,100"> (set: $dayCount to $dayCount + 1)
+Your mom sends you off to the bus alone. The walk is not far, and the air is fresh. Lovely.
+
+Casey rambles on and on about how much she hates her math teacher. You actually disagreee but keep it to yourself. 
+
+Casey joins you on the walk to home room, stopping to say hi to a million people. 
+
+[[Tomorrow|tomorrow]]</tw-passagedata><tw-passagedata pid="6" name="bad bus" tags="" position="575,650" size="100,100"> (set: $dayCount to $dayCount + 1)
+Your mom and sister decide to join you on your walk to the bus stop. While waiting, your sister starts chanting &quot;Oli!&quot;
+
+&quot;Oli, Oli, Oli.&quot; You hate that nickname. Where did she even get it from? No one ever calls you Oli.
+
+You always get the window seat when riding with Casey. Today, the window was down, and as the bus drove off, your sister calls out, &quot;Bye bye, Oli!&quot;
+
+Casey snickers and some kids in the back start chanting &quot;Oli&quot;. You try and laugh it off, but when you arrive at school, Casey strands you to talk with some girls ahead.
+
+[[Tomorrow|tomorrow]]</tw-passagedata><tw-passagedata pid="7" name="good car" tags="" position="950,425" size="100,100"> (set: $dayCount to $dayCount + 1)
+You help your sister buckle into her carseat, reminding her not to play with the seat belt. Your mother jokes that you are trying to steal her job. 
+
+The ride is quiet.
+
+While being dropped off, you forget your lunch. Sarah was in the car behind you and did the same thing. You plan to buy a lunch together.
+
+[[Tomorrow|tomorrow]]</tw-passagedata><tw-passagedata pid="8" name="bad car" tags="" position="250,700" size="100,100"> (set: $dayCount to $dayCount + 1)
+You start buckling your sister into her carseat. Your mother reminds you to make sure it clicks. It doesn&#39;t. 
+
+The ride is quiet.
+
+While being dropped off, your sister steps out of the car with you and starts running around. Your mom emplores you to grab her, but you struggle for a bit. Sarah was in the car behind you and glared as she walked by.
+
+[[Tomorrow|tomorrow]]</tw-passagedata><tw-passagedata pid="9" name="tomorrow" tags="" position="350,900" size="100,100">(if: $dayCount &lt;= 5)[
+
+Popularity: $popularity  
+Family Bond: $familyBond
+
+Why not go with the hoodie again. Comfy, fashionable, no downsides.
+
+You grab the lunch your mother had prepared for you.
+
+(set: $roll to (random: 1, 100)) (if: $roll &lt;= 80)[ (set: $popularity to $popularity + 3) (set: $familyBond to $familyBond + 0) [[&quot;Ride the bus.&quot;|good bus]]
+](else:)[(set: $popularity to $popularity - 6)(set: $familyBond to $familyBond - 3) [[&quot;Ride the bus.&quot;|bad bus]]]
+(if: $roll &lt;= 60)[(set: $popularity to $popularity + 1)(set: $familyBond to $familyBond + 1)[[&quot;Ride with mom.&quot;|good car]]
+](else:)[(set: $popularity to $popularity - 3)(set: $familyBond to $familyBond - 2)[[&quot;Ride with mom.&quot;|bad car]]]
+](else:)[
+Popularity: $popularity  
+Family Bond: $familyBond
+
+It&#39;s the weekend. Let&#39;s take a break.
+
+	[[End.|end]]
+]</tw-passagedata><tw-passagedata pid="10" name="end" tags="" position="350,1025" size="100,100">Thank you.</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
